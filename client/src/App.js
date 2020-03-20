@@ -3,9 +3,11 @@ import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
+// For generating keys to list elements, to get rid of React's warning
 import { v1 as uuidv1 } from 'uuid';
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +28,7 @@ class App extends React.Component {
       this.setState({response: res.data.message})
     })
     .catch(() => {
+      // Give some instructions in case the server isn't running or responding
       this.setState({response: "Server not responding. Start the server and refresh this page."})
     })
   }
@@ -47,8 +50,9 @@ class App extends React.Component {
 
   render() {
 
+    // Map the database content to individual list elements
     const facts = this.state.dbItems.map(item => {
-      return ( <li key={uuidv1()}>{item}</li> );
+      return (<li key={uuidv1()}>{item}</li>);
     })
 
     return (
