@@ -1,7 +1,7 @@
 ## API DEMO
 A simple API demo made with the MERN stack (MongoDB, Express, React, Node). 
 A React client makes a request to the Express Node server. The server also queries MongoDB to get "on-demand" data for the client.
-### Installation
+### Installation and usage
  1. Clone the repository
  2. Within your cloned repository folder, using a terminal, navigate to the root folder containing the "client" and the "server" folder
  3. In the terminal, type 'npm install' to install [concurrently](https://www.npmjs.com/package/concurrently). This nice little tool allows you to start the client and the server with one command within one terminal.
