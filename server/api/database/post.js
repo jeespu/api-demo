@@ -5,11 +5,7 @@ function addRandomFact(req, res) {
     
     const collection = getDb().collection('TestCollection')
 
-    console.log(req.params)
-
-    collection.insert({
-        content: "Dummy content"
-    })
+    collection.insertOne(req.body)
 }
 
 module.exports = addRandomFact
