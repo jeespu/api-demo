@@ -1,3 +1,5 @@
-const helloBromeco = () => {
-    return { message: "Hello Bromeco!" };
+module.exports = () => {
+    return ({
+        message: "Hello Bromeco!"
+    })
 }

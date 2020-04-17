@@ -1,17 +1,20 @@
 const app = require('express')();
 const router = require('./router');
-const db = require('./db');
+const connectToDb = require('./db');
 const cors = require('cors');
 
-db.connect(err => {
-    
-    if (err) process.exit(1);
+connectToDb()
+    .then(() => {
+        console.log("Database connection established")
 
-    app.use(cors());
+        app.use(cors());
 
-    app.use(router);
+        app.use(router);
 
-    app.listen(5000, () => {
-        console.log('App listening on port 5000')
+        app.listen(5000, () => {
+            console.log('App listening on port 5000')
+        })
     })
-})
+    .catch(() => {
+        process.exit(1);
+    })
