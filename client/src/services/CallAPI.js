@@ -15,21 +15,22 @@ const helloBromeco = () => {
 const getRandomFact = () => {
     return axios.get('http://localhost:5000/database')
         .then(res => {
-            return res.data[0].content;
+            return res.data[0].content
         })
         .catch(err => {
-            throw err;
+            console.error('Could not fetch any facts', err)
         })
-    }
+}
 
-const addRandomFact = (input) => {
+// Post a fact to MongoDB
+const addRandomFact = customFact => {
     return axios
-        .post('http://localhost:5000/database', { content: input })
-        .then(res => {
+        .post('http://localhost:5000/database', { content: customFact })
+        .then(() => {
             return
         })
         .catch(err => {
-            console.error('Error updating records.', err)
+            console.error('Error updating records', err)
         })
 }
 

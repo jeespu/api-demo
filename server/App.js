@@ -6,9 +6,12 @@ const cors = require('cors');
 
 connectToDb()
     .then(() => {
+        // We are connected!
 
+        // Handle cross-origin resource sharing issue
         app.use(cors());
 
+        // Enable the usage of req.body to process the axios request properly
         app.use(express.urlencoded({ extended: true }));
         app.use(express.json());
 
@@ -19,5 +22,6 @@ connectToDb()
         })
     })
     .catch(() => {
+        // When we can't connect to the database
         process.exit(1);
     })

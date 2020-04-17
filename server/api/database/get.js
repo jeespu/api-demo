@@ -2,25 +2,25 @@ const { getDb } = require('../../db') // The database object
 
 function getRandomFact(req, res) {
     
+    // "Select" the proper collection
     const collection = getDb().collection('TestCollection')
 
-    // Find all items in the collection and send them as a JSON array response
-    collection.aggregate({ $sample: { size: 1 } }, 
+    // Pick a random document from the specified collection
+    collection.aggregate({ $sample: { size: 1 } },
         (err, cursor) => {
-        if (err) throw err;
+
+        // Error handling
+        if (err) {
+            console.error('Could not pick a document', err)
+            return
+        }
 
         cursor.toArray()
             .then(document => {
+                // The response
                 res.send(document)
             })
     })
-
-        // .then(items => {
-        //     res.send(items)
-        // })
-        // .catch(err => {
-        //     console.error('Could not find any records.', err)
-        // })
 }
 
 module.exports = getRandomFact

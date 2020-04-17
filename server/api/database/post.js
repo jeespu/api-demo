@@ -5,6 +5,8 @@ function addRandomFact(req, res) {
     
     const collection = getDb().collection('TestCollection')
 
+    // Simple as that.
+    // Using req.body seems to require extra configuration in App.js.
     collection.insertOne(req.body)
 }
 
