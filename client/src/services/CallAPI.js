@@ -15,15 +15,22 @@ const helloBromeco = () => {
 const getRandomFact = () => {
     return axios.get('http://localhost:5000/database')
         .then(res => {
-            return res.data.content[Math.floor(Math.random() * 3)];
+            return res.data.content;
         })
         .catch(err => {
             throw err;
         })
     }
 
-const addRandomFact = () => {
-    console.log('Nothing here yet');
+const addRandomFact = (input) => {
+    return axios
+        .post('http://localhost:5000/database', { content: input })
+        .then(res => {
+            console.log("Response data: ", res.data)
+        })
+        .catch(err => {
+            console.error('Error updating records.', err)
+        })
 }
 
 export {

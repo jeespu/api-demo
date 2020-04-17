@@ -1,10 +1,11 @@
 const app = require('express')();
 const router = require('./router');
-const { connectToDb } = require('./db');
+const { connectToDb, getDb } = require('./db');
 const cors = require('cors');
 
 connectToDb()
     .then(() => {
+
         app.use(cors());
 
         app.use(router);

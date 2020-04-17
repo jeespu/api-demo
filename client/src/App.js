@@ -9,6 +9,7 @@ const App = () => {
 
   const [fact, setFact] = useState();
   const [response, setResponse] = useState('Loading...');
+  const [factInput, setFactInput] = useState('')
 
   useEffect(() => {
     helloBromeco()
@@ -32,8 +33,8 @@ const App = () => {
         <ListElement>{fact}</ListElement>
       </ul>
       <h2 className="my-4">Post a fact</h2>
-      <input type="text"/>
-      <Button variant="primary" size="md" onClick={() => addRandomFact()}>Submit</Button>
+      <input type="text" value={factInput} onChange={e => setFactInput(e.target.value)}/>
+      <Button variant="primary" size="md" onClick={() => addRandomFact(factInput)}>Submit</Button>
     </div>
   );
 }
